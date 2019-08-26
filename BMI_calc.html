@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+	<title>Calculadora BMI</title>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+
+
+	<style>
+.outer {
+	width: 600px;
+	height: 250px;
+	margin: 0 auto;
+}
+.outer .chart-container {
+	width: 600px;
+	float: left;
+	height: 250px;
+}
+.highcharts-yaxis-grid .highcharts-grid-line {
+	display: none;
+}
+
+@media (max-width: 600px) {
+	.outer {
+		width: 100%;
+		height: 400px;
+	}
+	.outer .chart-container {
+		width: 300px;
+		float: none;
+		margin: 0 auto;
+	}
+
+}
+	</style>
+	
+	
+	<script type="text/javascript">
+	</script>
+
+	</head>
+
+	<body>
+
+	<noscript>
+		<p>Por favor habilita javascript para su correcto funcionamiento</p>
+	</noscript>
+
+	<p>Esta es una calculadora de BMI</p>
+	<br>
+
+	<label>Unidad de Peso</label>
+	<select id="options1" onchange="ingresoData()">
+		<option id="kilo" selected="selected">kg (kilogramo)</option>
+		<option id="libra">lb (libra)</option>
+	</select>
+	<br>
+	<br>
+
+	<label>Unidad de Medida</label>
+	<select id="options2" onchange="ingresoData()">
+		<option id="centi" selected="selected">cm (centimetro)</option>
+		<option id="metro">m (metro)</option>
+		<option id="pulg">pulg (pulgada)</option>
+	</select>
+	<br>
+	<br>
+	
+	<label>Sexo: </label>
+	<input type="radio" name="gender" class="radio" id="male" value="0" onclick="gender(),">Hombre
+	<input type="radio" name="gender" class="radio" id="female" value="1" onclick="gender()">Mujer<br><br>
+	
+	<label>Peso:</label>
+	<input id="peso" onchange="ingresoData()" pattern="^\d*(\.\d{0,2})?$" onclick="" onkeypress="return isNumberKeyWeight(event,'peso')" onkeyup="dotInNumber()" maxlength="6" size="5">
+	<label id="units_weight">kg</label>
+	<br>
+	<br>
+	<label>Estatura:</label>
+	<input id="estatura" onchange="ingresoData()" pattern="^\d*(\.\d{0,2})?$" onclick="" onkeypress="return isNumberKeyHeight(event,'estatura')" onkeyup="dotInNumber()" maxlength="6" size="5">
+	<label id="units_height">cm</label>
+	<br>
+	<br>
+	<label>BMI = </label>
+	<b><label id="resultado">0</label> <label id="mensaje"></label></b>
+	<br>
+	<br>
+	<div class="outer">
+		<div id="container-bmi" class="chart-container" style="display: none"></div>
+	</div>
+	<br>
+	<br>
+	<div id="recommendations" style="display: none">
+		<p>Para estar en un BMI normal debe tener un peso maximo de 
+		<label id="recommended_max_weight"></label> y un minimo de 
+		<label id="recommended_min_weight"></label></p>
+		<p>Esto se puede lograr reduciendo en <label id="lost_weight_min"></label> su actual peso
+		</p>
+	</div>
+
+	<script src="BMICalculator.js"></script>
+	
+	</body>
+
+</html>
